@@ -1,0 +1,38 @@
+{
+  "name": "Mare Cosmin — site-uri și aplicații la comandă",
+  "short_name": "Mare Cosmin",
+  "description": "Dezvoltare site-uri și aplicații web pentru afaceri din România. Dej, Cluj.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#070d0c",
+  "theme_color": "#0A110E",
+  "lang": "ro-RO",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "public/Logotype Dark Mare Cosmin.png",
+      "sizes": "1640x720",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "public/Logotype Dark Mare Cosmin.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "public/Logo Dark.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "public/Transparent Logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

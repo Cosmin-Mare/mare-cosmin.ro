@@ -2,6 +2,35 @@
    Mare Cosmin — Teal & warm accent
    ============================================ */
 
+/*
+ * Logotype uses its own family name so font-weight works. Bundled Helvetica
+ * CSS from CDNs uses local('Helvetica Neue') first; on macOS that system
+ * font often ignores 100/300 vs 700 in nested spans.
+ */
+@font-face {
+    font-family: 'Mare Cosmin Neue';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('https://fonts.cdnfonts.com/s/14188/HelveticaNeue-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Mare Cosmin Neue';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url('https://fonts.cdnfonts.com/s/14188/HelveticaNeueLightItalic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Mare Cosmin Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('https://fonts.cdnfonts.com/s/14188/HelveticaNeueBold.woff') format('woff');
+}
+
 :root {
     --bg-deep: #070d0c;
     --bg-raised: #0c1413;
@@ -18,6 +47,8 @@
     --warm-dim: #c4893a;
     --warm-soft: rgba(232, 165, 75, 0.12);
     --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+    --brand-m: #ef9f27;
+    --brand-c: #1d9e75;
 }
 
 *, *::before, *::after {
@@ -39,6 +70,27 @@ body {
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 300;
+    padding: 12px 18px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--bg-deep);
+    background: var(--accent);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 16px;
+    outline: 2px solid var(--warm);
+    outline-offset: 3px;
 }
 
 /* --- Scroll progress --- */
@@ -123,10 +175,41 @@ img {
 }
 
 .nav-logo {
-    font-family: var(--font-display);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.nav-logo-img {
+    height: 40px;
+    width: 40px;
+    display: block;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.brand-name {
+    font-family: 'Mare Cosmin Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.brand-m {
     font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: -0.02em;
+    color: var(--brand-m);
+}
+
+.brand-are {
+    font-weight: 300;
+    color: var(--text);
+}
+
+.brand-c {
+    font-weight: 700;
+    color: var(--brand-c);
+}
+
+.brand-osmin {
+    font-weight: 300;
+    font-style: italic;
     color: var(--text);
 }
 
@@ -286,23 +369,10 @@ img {
 }
 
 .hero-title {
-    font-family: var(--font-display);
     font-size: clamp(2.5rem, 5vw, 3.75rem);
-    font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.08;
     margin-bottom: 18px;
-    background: linear-gradient(120deg, #f5fffb 0%, var(--accent) 42%, var(--warm) 88%, #fff8eb 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: titleShift 8s ease-in-out infinite;
-}
-
-@keyframes titleShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
 }
 
 .hero-subtitle {
@@ -466,13 +536,11 @@ img {
     justify-content: center;
 }
 
-.despre-initials {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--text);
+.despre-logo {
+    position: relative;
     z-index: 1;
+    object-fit: contain;
+    border-radius: 20px;
 }
 
 .despre-badge-ring {
@@ -985,12 +1053,27 @@ img {
 .footer {
     padding: 36px 0;
     border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     text-align: center;
+}
+
+.footer-logo {
+    object-fit: contain;
+    border-radius: 6px;
+    opacity: 0.92;
 }
 
 .footer p {
     font-size: 0.84rem;
     color: #6a8078;
+    margin: 0;
 }
 
 /* --- Fade-in --- */
