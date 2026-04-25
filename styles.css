@@ -741,10 +741,44 @@ img {
 }
 
 /* --- Proiecte --- */
+.proiecte-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.proiecte-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.proiecte-subtitle {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0;
+}
+
+.proiecte-group-lead {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 52ch;
+}
+
 .proiecte-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+}
+
+.proiecte-grid--narrow {
+    grid-template-columns: 1fr;
+    max-width: min(100%, 520px);
 }
 
 .proiect-card {
