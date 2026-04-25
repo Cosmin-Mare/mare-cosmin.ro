@@ -1,7 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 # Meta / Facebook link preview crawler (Sharing Debugger expects explicit allow)
 User-agent: facebookexternalhit
-Allow: /
+Disallow:
 
 User-agent: Facebot
 Allow: /
