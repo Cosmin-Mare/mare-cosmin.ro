@@ -5,6 +5,21 @@
 (function () {
     'use strict';
 
+    var isEn = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
+    var t = isEn ? {
+        more: 'More',
+        less: 'Less',
+        thanks: function (n) { return 'Thanks, ' + n + '! I\'ll get back to you soon.'; },
+        failed: 'Something went wrong. Try again or email me directly.',
+        network: 'Connection error. Check your internet or email me directly.'
+    } : {
+        more: 'Mai mult',
+        less: 'Mai puțin',
+        thanks: function (n) { return 'Mulțumesc, ' + n + '! Revin cu un răspuns cât de curând.'; },
+        failed: 'Ceva nu a mers. Încearcă din nou sau scrie-mi direct pe email.',
+        network: 'Eroare de conexiune. Verifică internetul sau scrie-mi direct pe email.'
+    };
+
     var nav = document.getElementById('nav');
     var scrollProgress = document.getElementById('scrollProgress');
 
@@ -70,14 +85,12 @@
     });
 
     // --- Active nav by scroll position (works for short sections too) ---
-    var navSections = [
-        { id: 'despre', nav: 'despre' },
-        { id: 'experienta', nav: 'experienta' },
-        { id: 'proiecte', nav: 'proiecte' },
-        { id: 'servicii', nav: 'servicii' },
-        { id: 'contact', nav: 'contact' }
-    ];
     var navAnchors = document.querySelectorAll('.nav-links a[data-nav]');
+    var navSections = [];
+    navAnchors.forEach(function (a) {
+        var id = a.getAttribute('data-nav');
+        navSections.push({ id: id, nav: id });
+    });
 
     function setActiveNav(id) {
         navAnchors.forEach(function (a) {
@@ -92,7 +105,7 @@
     var navScrollTicking = false;
     function updateActiveNavFromScroll() {
         navScrollTicking = false;
-        if (!navAnchors.length) return;
+        if (!navSections.length) return;
         var offset = nav.offsetHeight + 32;
         var y = window.scrollY + offset;
         var active = navSections[0].nav;
@@ -156,6 +169,7 @@
             var target = parseInt(el.getAttribute('data-target'), 10);
             if (isNaN(target)) return;
             var start = null;
+            el.textContent = '0';
 
             function step(ts) {
                 if (!start) start = ts;
@@ -218,7 +232,7 @@
             var open = !card.classList.contains('is-expanded');
             card.classList.toggle('is-expanded', open);
             btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-            btn.textContent = open ? 'Mai puțin' : 'Mai mult';
+            btn.textContent = open ? t.less : t.more;
         });
     });
 
@@ -262,17 +276,18 @@
                     success.className = 'form-success';
                     success.innerHTML =
                         '<span class="check">&#10003;</span>' +
-                        '<p>Mulțumesc, ' + name + '! Revin cu un răspuns cât de curând.</p>';
+                        '<p></p>';
+                    success.querySelector('p').textContent = t.thanks(name);
                     formParent.prepend(success);
                 } else {
-                    formError.textContent = data.message || 'Ceva nu a mers. Încearcă din nou sau scrie-mi direct pe email.';
+                    formError.textContent = data.message || t.failed;
                     formError.style.display = 'block';
                 }
             })
             .catch(function () {
                 submitBtn.classList.remove('btn-loading');
                 submitBtn.disabled = false;
-                formError.textContent = 'Eroare de conexiune. Verifică internetul sau scrie-mi direct pe email.';
+                formError.textContent = t.network;
                 formError.style.display = 'block';
             });
     });
