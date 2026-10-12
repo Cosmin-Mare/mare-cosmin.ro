@@ -32,39 +32,39 @@
 }
 
 :root {
-    /* Light page, dark bookends (nav, hero, contact, footer). Components only read these tokens. */
+    /* True black and white. Grey is only for small meta text and hairlines.
+       Odd sections of <main> (hero first), the nav and the footer are dark; the rest are light. */
     --bg-deep: #ffffff;
-    --bg-card: #f4f4f4;
-    --border: #dcdcdc;
-    --border-strong: #b8b8b8;
-    --text: #0a0a0a;
-    --text-soft: #262626;
-    --text-muted: #4d4d4d;
-    --text-faint: #666666;
-    --accent: #0a0a0a;
-    --radius: 4px;
-    --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --bg-card: #fafafa;
+    --border: #eaeaea;
+    --border-strong: #c9c9c9;
+    --text: #000000;
+    --text-soft: #171717;
+    --text-muted: #666666;
+    --text-faint: #6f6f6f;
+    --accent: #000000;
+    --radius: 6px;
+    --font-display: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
 
 .nav,
-.hero,
-#contact,
-.footer {
-    --bg-deep: #0a0a0a;
-    --bg-card: #141414;
-    --border: #2a2a2a;
-    --border-strong: #444444;
-    --text: #fafafa;
-    --text-soft: #d4d4d4;
-    --text-muted: #a8a8a8;
-    --text-faint: #8c8c8c;
-    --accent: #fafafa;
+.footer,
+main > section:nth-child(odd) {
+    --bg-deep: #000000;
+    --bg-card: #0a0a0a;
+    --border: #2e2e2e;
+    --border-strong: #4a4a4a;
+    --text: #ffffff;
+    --text-soft: #ededed;
+    --text-muted: #a1a1a1;
+    --text-faint: #8f8f8f;
+    --accent: #ffffff;
     color: var(--text);
 }
 
-.hero,
-#contact,
-.footer {
+.footer,
+main > section:nth-child(odd) {
     background: var(--bg-deep);
 }
 
@@ -81,7 +81,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-display);
     color: var(--text);
     background: var(--bg-deep);
     line-height: 1.7;
@@ -156,7 +156,7 @@ img {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(10, 10, 10, 0.92);
+    background: rgba(0, 0, 0, 0.92);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid transparent;
@@ -506,7 +506,6 @@ img {
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: var(--radius);
-    filter: grayscale(1) contrast(1.05);
 }
 
 /* --- Experiență --- */
@@ -1109,7 +1108,7 @@ img {
         top: 64px;
         left: 0;
         right: 0;
-        background: rgba(10, 10, 10, 0.97);
+        background: rgba(0, 0, 0, 0.97);
         backdrop-filter: blur(14px);
         flex-direction: column;
         padding: 22px;
@@ -1287,4 +1286,57 @@ img {
     .container {
         padding: 0 20px;
     }
+}
+
+/* --- Contrast and type overrides (kept last on purpose) --- */
+.hero-desc,
+.section-lead,
+.experience-body p,
+.experience-footnote,
+.proiecte-group-lead,
+.serviciu-card .serviciu-extra,
+.servicii-footer,
+.contact-intro {
+    color: var(--text-soft);
+}
+
+.section-title,
+.hero-tagline,
+.hero-facts,
+.proiect-meta,
+.proiect-cta,
+.experience-org,
+.experience-dates,
+.case-facts dt,
+.nav-links a.nav-lang {
+    font-family: var(--font-mono);
+}
+
+.section-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-top: 0.35rem;
+}
+
+.hero-tagline,
+.hero-facts,
+.proiect-meta,
+.proiect-cta,
+.experience-org,
+.experience-dates {
+    font-size: 0.8rem;
+    letter-spacing: 0;
+}
+
+.case-facts dt {
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.hero-facts {
+    color: var(--text-muted);
 }
