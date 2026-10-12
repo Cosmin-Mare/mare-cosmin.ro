@@ -11,25 +11,25 @@
   "dir": "ltr",
   "icons": [
     {
-      "src": "public/Logotype Dark Mare Cosmin.png",
+      "src": "public/Logotype Mono Mare Cosmin.png",
       "sizes": "1640x720",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "public/Logotype Dark Mare Cosmin.svg",
+      "src": "public/Logotype Mono Mare Cosmin.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "public/Logo Dark.png",
+      "src": "public/Logo Mono.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "public/Transparent Logo.svg",
+      "src": "public/Logo Mono.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any"

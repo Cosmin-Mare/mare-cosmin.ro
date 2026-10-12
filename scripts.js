@@ -7,14 +7,10 @@
 
     var isEn = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
     var t = isEn ? {
-        more: 'More',
-        less: 'Less',
         thanks: function (n) { return 'Thanks, ' + n + '! I\'ll get back to you soon.'; },
         failed: 'Something went wrong. Try again or email me directly.',
         network: 'Connection error. Check your internet or email me directly.'
     } : {
-        more: 'Mai mult',
-        less: 'Mai puțin',
         thanks: function (n) { return 'Mulțumesc, ' + n + '! Revin cu un răspuns cât de curând.'; },
         failed: 'Ceva nu a mers. Încearcă din nou sau scrie-mi direct pe email.',
         network: 'Eroare de conexiune. Verifică internetul sau scrie-mi direct pe email.'
@@ -127,92 +123,6 @@
 
     window.addEventListener('resize', onNavScroll, { passive: true });
     updateActiveNavFromScroll();
-
-    // --- Fade-in on scroll ---
-    var fadeElements = document.querySelectorAll('.section, .hero');
-
-    var observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -55px 0px',
-        threshold: 0.08
-    };
-
-    var fadeObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                fadeObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    fadeElements.forEach(function (el) {
-        el.classList.add('fade-in');
-        fadeObserver.observe(el);
-    });
-
-    // --- Hero stat counters ---
-    var heroStats = document.getElementById('heroStats');
-    var counted = false;
-
-    function easeOutCubic(t) {
-        return 1 - Math.pow(1 - t, 3);
-    }
-
-    function runCounters() {
-        if (!heroStats || counted) return;
-        counted = true;
-        var values = heroStats.querySelectorAll('.hero-stat-value');
-        var duration = 1800;
-
-        values.forEach(function (el) {
-            var target = parseInt(el.getAttribute('data-target'), 10);
-            if (isNaN(target)) return;
-            var start = null;
-            el.textContent = '0';
-
-            function step(ts) {
-                if (!start) start = ts;
-                var p = Math.min((ts - start) / duration, 1);
-                var eased = easeOutCubic(p);
-                el.textContent = Math.round(target * eased);
-                if (p < 1) {
-                    requestAnimationFrame(step);
-                } else {
-                    el.textContent = String(target);
-                }
-            }
-            requestAnimationFrame(step);
-        });
-    }
-
-    if (heroStats) {
-        var statObserver = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        runCounters();
-                        statObserver.disconnect();
-                    }
-                });
-            },
-            { threshold: 0.25 }
-        );
-        statObserver.observe(heroStats);
-    }
-
-    // --- Servicii expand toggles ---
-    document.querySelectorAll('.serviciu-toggle').forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            var card = btn.closest('.serviciu-card');
-            if (!card) return;
-            var open = !card.classList.contains('is-expanded');
-            card.classList.toggle('is-expanded', open);
-            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-            btn.textContent = open ? t.less : t.more;
-        });
-    });
 
     // --- Contact form (Web3Forms) ---
     var form = document.getElementById('contactForm');
