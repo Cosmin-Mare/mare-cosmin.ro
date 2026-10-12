@@ -32,17 +32,40 @@
 }
 
 :root {
-    --bg-deep: #0a0a0a;
-    --bg-card: #141414;
-    --border: #262626;
-    --border-strong: #3a3a3a;
-    --text: #fafafa;
-    --text-soft: #d4d4d4;
-    --text-muted: #9a9a9a;
-    --text-faint: #808080;
-    --accent: #fafafa;
+    /* Light page, dark bookends (nav, hero, contact, footer). Components only read these tokens. */
+    --bg-deep: #ffffff;
+    --bg-card: #f4f4f4;
+    --border: #dcdcdc;
+    --border-strong: #b8b8b8;
+    --text: #0a0a0a;
+    --text-soft: #262626;
+    --text-muted: #4d4d4d;
+    --text-faint: #666666;
+    --accent: #0a0a0a;
     --radius: 4px;
     --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.nav,
+.hero,
+#contact,
+.footer {
+    --bg-deep: #0a0a0a;
+    --bg-card: #141414;
+    --border: #2a2a2a;
+    --border-strong: #444444;
+    --text: #fafafa;
+    --text-soft: #d4d4d4;
+    --text-muted: #a8a8a8;
+    --text-faint: #8c8c8c;
+    --accent: #fafafa;
+    color: var(--text);
+}
+
+.hero,
+#contact,
+.footer {
+    background: var(--bg-deep);
 }
 
 *, *::before, *::after {
@@ -463,6 +486,29 @@ img {
     background: var(--text-muted);
 }
 
+.despre-layout {
+    grid-row: 1 / span 2;
+}
+
+.section > .container.has-photo {
+    grid-template-rows: auto 1fr;
+}
+
+.section > .container > .about-photo {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 20px 0 0;
+}
+
+.about-photo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+    filter: grayscale(1) contrast(1.05);
+}
+
 /* --- Experiență --- */
 .experience-list {
     display: flex;
@@ -661,8 +707,8 @@ img {
 }
 
 .proiect-desc {
-    font-size: 0.92rem;
-    color: var(--text-muted);
+    font-size: 0.95rem;
+    color: var(--text-soft);
     line-height: 1.6;
     flex: 1;
     margin-bottom: 16px;
@@ -1005,17 +1051,52 @@ img {
 }
 
 .case-facts dt {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
     padding-top: 0.15rem;
 }
 
 .case-facts dd {
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    line-height: 1.6;
+    font-size: 0.97rem;
+    color: var(--text);
+    line-height: 1.65;
     margin: 0;
+}
+
+/* Case study titles are buttons so they can fold on phones; inert on desktop */
+.case-toggle {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: default;
+}
+
+.case-toggle:disabled {
+    color: inherit;
+    opacity: 1;
+}
+
+.case-chevron {
+    display: none;
+    flex-shrink: 0;
+    width: 9px;
+    height: 9px;
+    margin-top: 0.4em;
+    border-right: 1.5px solid var(--text);
+    border-bottom: 1.5px solid var(--text);
+    transform: rotate(45deg);
+    transition: transform 0.25s ease;
 }
 
 @media (max-width: 768px) {
@@ -1157,6 +1238,39 @@ img {
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 36px;
+    }
+
+    .section > .container > .about-photo {
+        grid-column: 1;
+        grid-row: auto;
+        max-width: 140px;
+        margin: 0 0 20px;
+    }
+
+    .despre-layout {
+        grid-row: auto;
+    }
+
+    .section > .container.has-photo {
+        grid-template-rows: none;
+    }
+
+    .case-toggle {
+        cursor: pointer;
+        padding: 6px 0;
+    }
+
+    .case-chevron {
+        display: block;
+    }
+
+    .case-toggle[aria-expanded="true"] .case-chevron {
+        transform: translateY(0.2em) rotate(-135deg);
+    }
+
+    .case-item.is-collapsed .case-facts,
+    .case-item.is-collapsed .proiect-cta {
+        display: none;
     }
 }
 

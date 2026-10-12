@@ -112,6 +112,38 @@
     window.addEventListener('resize', onNavScroll, { passive: true });
     updateActiveNavFromScroll();
 
+    // --- Case studies: fold on phones, always open on larger screens ---
+    var caseItems = document.querySelectorAll('.case-item');
+    if (caseItems.length && window.matchMedia) {
+        var phone = window.matchMedia('(max-width: 768px)');
+
+        var syncCases = function () {
+            caseItems.forEach(function (item) {
+                var btn = item.querySelector('.case-toggle');
+                if (!btn) return;
+                btn.disabled = !phone.matches;
+                item.classList.toggle('is-collapsed', phone.matches);
+                btn.setAttribute('aria-expanded', phone.matches ? 'false' : 'true');
+            });
+        };
+
+        caseItems.forEach(function (item) {
+            var btn = item.querySelector('.case-toggle');
+            if (!btn) return;
+            btn.addEventListener('click', function () {
+                var collapsed = item.classList.toggle('is-collapsed');
+                btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+            });
+        });
+
+        syncCases();
+        if (phone.addEventListener) {
+            phone.addEventListener('change', syncCases);
+        } else if (phone.addListener) {
+            phone.addListener(syncCases);
+        }
+    }
+
     // --- Contact form (Web3Forms) ---
     var form = document.getElementById('contactForm');
     var submitBtn = document.getElementById('submitBtn');
