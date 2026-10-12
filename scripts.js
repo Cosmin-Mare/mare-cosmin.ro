@@ -201,28 +201,6 @@
         statObserver.observe(heroStats);
     }
 
-    // --- Cursor glow ---
-    var cursorGlow = document.getElementById('cursorGlow');
-    var glowActive = false;
-
-    if (cursorGlow) {
-        document.addEventListener('mousemove', function (e) {
-            if (!glowActive) {
-                cursorGlow.classList.add('active');
-                glowActive = true;
-            }
-            requestAnimationFrame(function () {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            });
-        });
-
-        document.addEventListener('mouseleave', function () {
-            cursorGlow.classList.remove('active');
-            glowActive = false;
-        });
-    }
-
     // --- Servicii expand toggles ---
     document.querySelectorAll('.serviciu-toggle').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
