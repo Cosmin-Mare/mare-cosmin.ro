@@ -17,7 +17,6 @@
     };
 
     var nav = document.getElementById('nav');
-    var scrollProgress = document.getElementById('scrollProgress');
 
     function handleNavScroll() {
         if (window.scrollY > 20) {
@@ -27,24 +26,13 @@
         }
     }
 
-    function updateScrollProgress() {
-        if (!scrollProgress) return;
-        var doc = document.documentElement;
-        var scrollTop = window.scrollY || doc.scrollTop;
-        var height = doc.scrollHeight - doc.clientHeight;
-        var pct = height > 0 ? (scrollTop / height) * 100 : 0;
-        scrollProgress.style.width = pct + '%';
-    }
-
     function onWindowScroll() {
         handleNavScroll();
-        updateScrollProgress();
         onNavScroll();
     }
 
     window.addEventListener('scroll', onWindowScroll, { passive: true });
     handleNavScroll();
-    updateScrollProgress();
 
     var navToggle = document.getElementById('navToggle');
     var navLinks = document.getElementById('navLinks');
