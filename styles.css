@@ -156,9 +156,8 @@ img {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    /* Solid on purpose: backdrop-filter on a fixed bar flickers while scrolling over black/white sections */
+    background: #000000;
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s ease;
 }
@@ -1108,8 +1107,7 @@ img {
         top: 64px;
         left: 0;
         right: 0;
-        background: rgba(0, 0, 0, 0.97);
-        backdrop-filter: blur(14px);
+        background: #000000;
         flex-direction: column;
         padding: 22px;
         gap: 18px;
