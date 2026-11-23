@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Custom form-to-PDF, document intake and Google Drive workflows by Cosmin Mare. See a 60-second walkthrough of a production nonprofit automation and request a scoped paid pilot.">
+  <meta name="theme-color" content="#090909">
+  <meta name="author" content="Cosmin Mare">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Paperwork into a workflow | Cosmin Mare">
+  <meta property="og:description" content="One small working workflow first. A production OCR-to-PDF case study, a 60-second walkthrough and a clearly scoped pilot.">
+  <meta property="og:url" content="https://mare-cosmin.ro/en/workflow-automation/">
+  <meta property="og:image" content="https://mare-cosmin.ro/public/Logotype%20Mono%20Mare%20Cosmin.png">
+  <link rel="canonical" href="https://mare-cosmin.ro/en/workflow-automation/">
+  <link rel="icon" href="/public/Favicon%20Mono.svg" type="image/svg+xml">
+  <title>Paperwork into a workflow | Cosmin Mare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {color-scheme:dark;--bg:#090909;--surface:#111;--muted:#9e9e9e;--line:#343434;--ink:#f5f5f5;--font:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased} a{color:inherit} .wrap{max-width:1050px;margin:auto;padding:0 28px}
+    .skip{position:absolute;left:-999px}.skip:focus{left:20px;top:20px;background:#fff;color:#000;padding:10px;z-index:50}
+    header{border-bottom:1px solid var(--line)}.head{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}.wordmark{font-size:15px;font-weight:650;letter-spacing:-.03em;text-decoration:none}.back{font-size:13px;color:#b5b5b5;text-decoration:none}.back:hover,.inline:hover{text-decoration:underline}.mono{font:500 11px 'Geist Mono',monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+    .hero{padding:100px 0 95px;border-bottom:1px solid var(--line)}.hero h1{font-size:clamp(43px,7.6vw,88px);line-height:1.02;letter-spacing:-.065em;font-weight:600;max-width:860px;margin:21px 0 28px}.hero .sub{font-size:clamp(18px,2.5vw,23px);line-height:1.42;max-width:640px;color:#d4d4d4;margin:0}.links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:42px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:11px 20px;border-radius:4px;border:1px solid #f5f5f5;background:#f5f5f5;color:#090909;text-decoration:none;font:600 14px var(--font);cursor:pointer}.btn:hover{background:#d9d9d9}.btn.secondary{color:#f5f5f5;background:transparent;border-color:#575757}.btn.secondary:hover{border-color:#fff}.fine{color:var(--muted);font-size:13px;margin-top:27px}
+    section.block{padding:76px 0;border-bottom:1px solid var(--line)}.eyebrow{margin:0 0 15px}.section-head{display:grid;grid-template-columns:215px 1fr;gap:24px;align-items:start}.section-head h2{font-size:clamp(25px,4vw,39px);letter-spacing:-.045em;line-height:1.14;font-weight:600;margin:0 0 19px}.section-head>div>p{color:#c5c5c5;max-width:690px;font-size:16px;margin:0 0 16px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:35px}.tile{border:1px solid var(--line);padding:24px;min-height:190px}.tile strong{display:block;font-size:17px;margin:20px 0 9px;font-weight:600}.tile p{font-size:14px;line-height:1.6;color:#bcbcbc;margin:0}
+    .demo{border:1px solid #4d4d4d;margin-top:30px;background:#101010}.demo-head{padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);flex-wrap:wrap}.demo-head b{font-size:14px}.demo-count{font:12px 'Geist Mono',monospace;color:#aaa}.demo-main{display:grid;grid-template-columns:240px 1fr;min-height:260px}.demo-nav{border-right:1px solid var(--line);padding:20px}.demo-nav button{display:block;text-align:left;width:100%;color:#a9a9a9;background:none;border:0;border-left:2px solid transparent;padding:13px 12px;font:500 13px var(--font);cursor:pointer}.demo-nav button[aria-current="step"]{color:#fff;border-left-color:#fff;background:#1a1a1a}.demo-detail{padding:32px 36px}.demo-detail h3{font-size:25px;line-height:1.2;letter-spacing:-.03em;margin:14px 0 10px}.demo-detail p{color:#bdbdbd;max-width:590px;margin:0 0 18px}.artifact{border:1px solid #444;background:#181818;border-radius:3px;padding:16px 18px;font:12px/1.65 'Geist Mono',monospace;color:#dedede;overflow-wrap:anywhere}.artifact span{color:#8c8c8c}.demo-actions{padding:20px 24px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.demo-actions p{font-size:12px;color:#999;margin:0}.demo-actions .btn{min-height:42px;padding:9px 15px;font-size:13px}.proof{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}.proof>div{border-top:1px solid var(--line);padding:17px 0}.proof b{display:block;margin-bottom:9px}.proof p{font-size:14px;color:#bcbcbc;margin:0 0 10px}.inline{font-weight:600;text-underline-offset:4px}
+    .scope{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:30px}.scope ul{padding-left:20px;margin:12px 0}.scope li{color:#c9c9c9;margin-bottom:10px;font-size:15px}.price{font-size:36px;font-weight:600;letter-spacing:-.05em}.price-desc{font-size:14px;color:var(--muted);max-width:430px}.last{background:#fff;color:#0a0a0a;padding:78px 0}.last h2{font-size:clamp(29px,5vw,51px);line-height:1.1;letter-spacing:-.05em;max-width:660px;margin:0 0 15px}.last p{max-width:650px;color:#3a3a3a}.last .btn{background:#000;color:#fff;border-color:#000}.last .btn:hover{background:#333}.last .secondary{background:none;color:#111;border-color:#999}.last .secondary:hover{border-color:#111}.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:24px 0;font-size:12px;color:#aaa}.foot a{text-decoration:none}.foot a:hover{text-decoration:underline}
+    @media(max-width:700px){.wrap{padding:0 20px}.hero{padding:70px 0}.hero h1{font-size:clamp(43px,10vw,70px)}.block{padding:55px 0!important}.section-head,.steps,.proof,.scope{grid-template-columns:1fr}.section-head{gap:15px}.tile{min-height:0}.demo-main{grid-template-columns:1fr}.demo-nav{display:grid;grid-template-columns:repeat(2,1fr);border-right:0;border-bottom:1px solid var(--line);padding:9px}.demo-nav button{font-size:12px}.demo-detail{padding:23px 22px}.demo-head,.demo-actions{padding:16px 20px}.last{padding:63px 0}.links{gap:12px}.btn{width:100%}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Small-business document and workflow automation","provider":{"@type":"Person","name":"Cosmin Mare","url":"https://mare-cosmin.ro/en/"},"areaServed":"Worldwide","serviceType":"Document intake, form-to-PDF generation, workflow integrations and internal tools","url":"https://mare-cosmin.ro/en/workflow-automation/"}</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+<header><div class="wrap head"><a class="wordmark" href="/en/">Cosmin Mare <span style="font-weight:400;color:#929292"> / Workflows</span></a><a class="back" href="/en/">Full portfolio ↗</a></div></header>
+<main id="main">
+  <section class="hero"><div class="wrap">
+    <p class="mono">Document workflows · Internal tools · Integrations</p>
+    <h1>Stop moving the same information between five different tools.</h1>
+    <p class="sub">I build small, reliable workflows that take information from a form or document, validate it, generate the right output, and put it where your team needs it.</p>
+    <div class="links"><a class="btn" href="mailto:contact@mare-cosmin.ro?subject=Workflow%20automation%20-%20project%20brief&body=What%20is%20the%20manual%20process%3F%0AWhich%20tools%20are%20involved%3F%0AWhat%20needs%20to%20happen%20when%20it%20fails%3F%0ADesired%20deadline%3A">Describe your workflow ↗</a><a class="btn secondary" href="#demo">60-second walkthrough ↓</a></div>
+    <p class="fine">Independent full-stack developer · Registered business in Romania · EU time zone · Remote contracts</p>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="section-head"><p class="mono eyebrow">What I can build</p><div><h2>One useful system, end to end.</h2><p>Instead of a generic app rebuild, start with the operation your team does manually every day.</p></div></div>
+    <div class="steps">
+      <div class="tile"><span class="mono">01 / Intake</span><strong>Capture without retyping</strong><p>Customer forms, document uploads, basic OCR, field extraction and validation before anything is submitted.</p></div>
+      <div class="tile"><span class="mono">02 / Output</span><strong>Create the finished document</strong><p>Populate branded PDFs, record the data, retain a clear audit trail, and handle invalid or duplicate submissions.</p></div>
+      <div class="tile"><span class="mono">03 / Handoff</span><strong>Connect the tools you already use</strong><p>Google Drive, Firebase, admin dashboards, secure APIs and the right human approval step where needed.</p></div>
+    </div>
+  </div></section>
+  <section class="block" id="demo"><div class="wrap">
+    <div class="section-head"><p class="mono eyebrow">60-second walkthrough</p><div><h2>A real project: tax paperwork for a local nonprofit.</h2><p>For Asociația Vă Ajutăm din Dej, I built a production flow that helps supporters complete a Romanian Form 230 and sends a signed PDF to the association's records. Below is a four-step, illustrative walkthrough with synthetic sample data.</p></div></div>
+    <div class="demo" aria-label="Four-step illustrative walkthrough">
+      <div class="demo-head"><b>From intake to a recorded PDF</b><span class="demo-count" id="time">Step 1 / 4 · 00:00</span></div>
+      <div class="demo-main">
+        <div class="demo-nav" aria-label="Walkthrough chapters">
+          <button type="button" data-step="0" aria-current="step">01. Capture</button>
+          <button type="button" data-step="1">02. Validate</button>
+          <button type="button" data-step="2">03. Generate</button>
+          <button type="button" data-step="3">04. Save</button>
+        </div>
+        <div class="demo-detail" aria-live="polite"><span class="mono" id="demo-kicker">01 / Input</span><h3 id="demo-title">Photograph the ID or enter details</h3><p id="demo-text">A browser OCR step reduces typing. Desktop users can move the camera step to their phone by scanning a QR code.</p><div class="artifact" id="demo-artifact"><span>Sample intake — not real customer data</span><br>Name: Alex Example<br>Personal ID: [redacted]<br>Source: camera or manual form</div></div>
+      </div>
+      <div class="demo-actions"><p>Click through at your pace, or play all four chapters in 60 seconds. This page is a walkthrough, not a live OCR demo.</p><button class="btn secondary" id="play" type="button">Play 60-second walkthrough ▶</button></div>
+    </div>
+    <div class="proof">
+      <div><b>See the production example</b><p>Open the nonprofit's public site and examine the workflow in its original context. Please use test data only when exploring.</p><a class="inline" href="https://vaajutamdindej.ro" target="_blank" rel="noopener noreferrer">Visit vaajutamdindej.ro ↗</a></div>
+      <div><b>Inspect the implementation</b><p>Next.js, browser OCR, PDF generation, Firestore, Google Drive API, duplicate checks and data migration.</p><a class="inline" href="https://github.com/Cosmin-Mare/vaajutam-nextjs" target="_blank" rel="noopener noreferrer">Browse the source code ↗</a></div>
+    </div>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="section-head"><p class="mono eyebrow">How we start</p><div><h2>Prove the workflow on one small paid milestone.</h2><p>No six-week discovery process and no ambiguous scope. We agree on sample inputs, the exact output and how we test success before building.</p></div></div>
+    <div class="scope">
+      <div><span class="mono">Typical first milestone</span><div class="price">$400–$700</div><p class="price-desc">Indicative fixed-price range for a narrow first deliverable, confirmed after I review the actual systems and requirements. Larger implementations are quoted separately.</p></div>
+      <div><span class="mono">What the milestone includes</span><ul><li>One agreed process with defined sample inputs</li><li>A working output in an agreed test environment</li><li>Validation and explicit failure behavior</li><li>A short handover and acceptance checklist</li></ul></div>
+    </div>
+  </div></section>
+  <section class="last"><div class="wrap"><span class="mono" style="color:#555">Start with the messy part</span><h2>Send me the one workflow you want off your team's plate.</h2><p>A description of what goes in, what should come out, and the systems involved is enough to check whether I can help. No sensitive customer data needed at this stage.</p><div class="links"><a class="btn" href="mailto:contact@mare-cosmin.ro?subject=Workflow%20automation%20-%20project%20brief&body=Current%20manual%20steps%3A%0AInput%20documents%20or%20forms%3A%0ADesired%20output%3A%0ATools%20involved%3A%0ADeadline%3A">Email a short brief ↗</a><a class="btn secondary" href="/en/">See the full portfolio ↗</a></div></div></section>
+</main>
+<footer><div class="wrap foot"><span>© 2026 Cosmin Mare · Dej, Romania</span><span><a href="mailto:contact@mare-cosmin.ro">contact@mare-cosmin.ro</a> · <a href="https://github.com/Cosmin-Mare">GitHub</a></span></div></footer>
+<script>
+(function(){
+  var stages=[
+    {k:"01 / Input",t:"Photograph the ID or enter details",p:"A browser OCR step reduces typing. Desktop users can move the camera step to their phone by scanning a QR code.",a:"<span>Sample intake — not real customer data</span><br>Name: Alex Example<br>Personal ID: [redacted]<br>Source: camera or manual form"},
+    {k:"02 / Validation",t:"Catch errors before submission",p:"The workflow checks fields and Romanian personal-number checksums, and prevents repeat submissions for the same tax year.",a:"<span>Sample validation status</span><br>Required fields: ✓ Complete<br>ID format: ✓ Checked<br>Duplicate submission: ✓ Not found"},
+    {k:"03 / Document",t:"Make the signed PDF",p:"The person's entries and signature are placed into the required document, so the volunteer team does not need to retype paperwork.",a:"<span>Sample output, for illustration</span><br>Form_230_Alex_Example.pdf<br>Status: Generated<br>Signature: Captured"},
+    {k:"04 / Storage",t:"Store it and make it findable",p:"The generated file is recorded in Firestore and uploaded to Google Drive when configured, giving the nonprofit a consistent handoff.",a:"<span>Illustrative record</span><br>Submission: Recorded<br>PDF: Linked to submission<br>Google Drive: Uploaded"}
+  ];
+  var i=0, playing=false, timer=null, elapsed=0, title=document.getElementById("demo-title"),desc=document.getElementById("demo-text"),artifact=document.getElementById("demo-artifact"),kick=document.getElementById("demo-kicker"),clock=document.getElementById("time"),play=document.getElementById("play"),buttons=Array.from(document.querySelectorAll("[data-step]"));
+  function draw(){var s=stages[i];kick.textContent=s.k;title.textContent=s.t;desc.textContent=s.p;artifact.innerHTML=s.a;buttons.forEach(function(b,n){if(n===i)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current")});clock.textContent="Step "+(i+1)+" / 4 · 00:"+String(elapsed).padStart(2,"0")}
+  function stop(){clearInterval(timer);timer=null;playing=false;play.textContent="Play 60-second walkthrough ▶"}
+  buttons.forEach(function(b){b.addEventListener("click",function(){stop();i=Number(b.dataset.step);elapsed=i*15;draw()})});
+  play.addEventListener("click",function(){if(playing){stop();return}i=0;elapsed=0;playing=true;play.textContent="Pause walkthrough";draw();timer=setInterval(function(){elapsed++;if(elapsed>=60){i=3;elapsed=60;draw();stop();return}i=Math.floor(elapsed/15);draw()},1000)});
+  draw();
+})();
+</script>
+</body>
+</html>
